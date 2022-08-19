@@ -48,22 +48,17 @@ class PropertyController extends Controller
         ]);
 
         if ($request->exists('file')) {
-            $uploadedFile = $request->file('file');
-            $filename = time().$uploadedFile->getClientOriginalName();
-
-            Storage::disk('local')->putFileAs(
-                'properties/'.$property->id,
-                $uploadedFile,
-                $filename
-            );
+            $image = $request->file;
+            $imageName = time() . '.' . $image->extension();
+            $image->move(public_path('images/'.$property->id), $imageName);
 
             $property->propertiesMedia()->create([
                 'property_id' => $property->id,
-                'path' => $uploadedFile
+                'path' => 'images/'.$property->id . '/' . $imageName,
             ]);
         }
 
-        return $property;
+        return redirect('/all-properties');
     }
 
     private function checkZipCode(string $zipcode)
