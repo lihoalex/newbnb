@@ -66,7 +66,7 @@
             <!-- Rental Rate -->
             <div>
                 <x-label for="price" :value="__('Rental Rate')" />
-                <x-input id="price" class="block mt-1 w-full" type="text" name="price" :value="old('price')" required />
+                <x-input id="price" class="block mt-1 w-full" type="text" name="price" :value="old('price')" />
             </div>
 
             <!-- House type -->
@@ -85,7 +85,7 @@
 
             <!-- Auto pricing -->
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="auto_calculate" name="auto_calculate">
+                <input type="checkbox" class="form-check-input" id="auto_calculate" name="auto_calculate" value="1" {{ old('is_featured') ? 'checked="checked"' : '' }}>
                 <label class="form-check-label" for="auto_calculate">Auto pricing</label>
             </div>
 

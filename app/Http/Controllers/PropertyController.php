@@ -15,12 +15,12 @@ class PropertyController extends Controller
 {
     public function getAllProperties(Request $request)
     {
-        return view('pages.all_properties', ['properties' => Property::paginate()]);
+        return view('pages.all_properties', ['properties' => Property::paginate(20)]);
     }
 
     public function getUserProperties()
     {
-        return view('pages.my_properties', ['properties' => auth()->user()->properties]);
+        return view('pages.my_properties', ['properties' => auth()->user()->properties()->paginate(20)]);
     }
 
     public function addProperty(AddPropertyRequest $request)
@@ -43,7 +43,7 @@ class PropertyController extends Controller
             'bedrooms_count' => $request->bedrooms,
             'square_ft' => $request->sqft,
             'house_type_id' => $request->house_type,
-            'rental_rate' => ($request->has('auto_calculate') && $request->auto_calculate == true) ?
+            'rental_rate' => ($request->input('auto_calculate')) ?
                 $this->calculatePrice($zipcode, $request->sqft) : $request->price
         ]);
 

@@ -2,12 +2,12 @@
 
     @if($property->propertiesMedia->count() > 0)
         @foreach($property->propertiesMedia as $media)
-        <img class="card-img-top" style="max-width: 1000px; max-height: 800px;" src="{{ asset($media->path) }}" alt="Photo">
+            <img class="card-img-top" style="max-width: 720px; max-height: 600px;" src="{{ asset($media->path) }}" alt="Photo">
         @endforeach
     @endif
 
     <div class="card-body">
-        <p class="card-title">{{$property->address->contry}}, {{$property->address->city}}, {{$property->address->street}} {{$property->address->number}}, apartment {{$property->address->apartment}}</p>
+        <p class="card-title">{{$property->address->country}}, {{$property->address->city}}, {{$property->address->street}} {{$property->address->number}}, apartment {{$property->address->apartment}}</p>
         <p class="card-text">User: {{$property->user->name}}</p>
         <p class="card-text">Email: {{$property->user->email}}</p>
         <p class="card-text">Sqft: {{$property->square_ft}}</p>

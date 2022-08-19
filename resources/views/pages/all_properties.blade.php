@@ -9,5 +9,9 @@
         @foreach($properties as $property)
             @include('components.card')
         @endforeach
+
+        <div class="py-6" style="max-width: 200px; min-width: 100px; margin: auto">
+            {{ $properties->links() }}
+        </div>
     </div>
 </x-app-layout>

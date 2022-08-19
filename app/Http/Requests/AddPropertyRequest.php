@@ -30,12 +30,13 @@ class AddPropertyRequest extends FormRequest
             'street' => 'required|string',
             'number' => 'required|string',
             'apartment' => 'required|string',
-            'bathrooms' => 'required|digits_between:0,10',
+            'bathrooms' => 'required|digits_between:0,20',
             'bedrooms' => 'required|digits_between:0,20',
             'sqft' => 'required|digits_between:0,100000',
             'house_type' => 'required|exists:house_types,id',
-            'auto_calculate' => 'required_without:price|boolean',
-            'price' => 'required_without:auto_calculate|digits_between:0,100000'
+            'auto_calculate' => 'required_without:price',
+            'price' => 'required_without:auto_calculate|digits_between:0,100000',
+            'file' => 'required|image|mimes:jpeg,png,jpg,gif'
         ];
     }
 }
