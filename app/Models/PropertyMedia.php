@@ -16,6 +16,6 @@ class PropertyMedia extends Model
 
     public function properties()
     {
-        return $this->hasMany(Property::class);
+        return $this->belongsTo(Property::class);
     }
 }

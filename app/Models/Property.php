@@ -23,7 +23,7 @@ class Property extends Model
         'updated_at',
     ];
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
@@ -40,6 +40,6 @@ class Property extends Model
 
     public function propertiesMedia()
     {
-        return $this->belongsTo(PropertyMedia::class);
+        return $this->hasMany(PropertyMedia::class);
     }
 }
