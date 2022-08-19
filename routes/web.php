@@ -15,15 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('pages.all_properties');
+    return redirect('all-properties');
 });
+
+Route::post('/all-properties', [PropertyController::class, 'getAllProperties']);
 
 Route::get('/add-property', function () {
     return view('pages.add_property');
-})->name('add_property');
+})->middleware(['auth'])->name('add_property');
 
 Route::post('/add-property', [PropertyController::class, 'addProperty'])->middleware(['auth'])->name('store_property');
-
 Route::get('/my-properties', [PropertyController::class, 'getUserProperties'])->middleware(['auth'])->name('my_properties');
 Route::get('/all-properties', [PropertyController::class, 'getAllProperties'])->name('all_properties');
 
